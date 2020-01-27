@@ -48,8 +48,8 @@ RUN conda install --quiet --yes 'spylon-kernel=0.4*' && \
 
 
 
-# Install spark-magic
 # RUN pip install sparkmonitor
+RUN pip install sparkmonitor
 RUN jupyter nbextension install sparkmonitor --py --user --symlink
 RUN jupyter nbextension enable sparkmonitor --py --user
 RUN pip uninstall -y tornado && pip uninstall -y nbconvert
