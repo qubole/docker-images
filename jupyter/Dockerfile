@@ -1,4 +1,4 @@
-ARG BASE_CONTAINER=jupyter/pyspark-notebook
+ARG BASE_CONTAINER=jupyter/pyspark-notebook:7a0c7325e470
 FROM $BASE_CONTAINER
 
 USER root
