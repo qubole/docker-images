@@ -1,4 +1,4 @@
-FROM gcr.io/spark-operator/spark:v2.4.0-gcs-prometheus
+FROM gcr.io/spark-operator/spark:v2.4.4-gcs-prometheus
 
 RUN mkdir -p /tmp && cd /tmp && wget https://repo1.maven.org/maven2/org/apache/hadoop/hadoop-aws/2.7.3/hadoop-aws-2.7.3.jar && \
  wget https://repo1.maven.org/maven2/com/amazonaws/aws-java-sdk/1.7.4/aws-java-sdk-1.7.4.jar && \
