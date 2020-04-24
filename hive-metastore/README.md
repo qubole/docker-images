@@ -4,7 +4,7 @@ Hive docker image for `metastore` (mysql backed) and `server`
 
 ## Build
 ```
-docker build -t quay.io/chattarajoy/hive-metastore .
+docker build -t gcr.io/hybrid-qubole/hive-metastore:latest .
 ```
 
 ## Run
@@ -12,7 +12,7 @@ docker build -t quay.io/chattarajoy/hive-metastore .
 ### Metastore
 
 ```
-docker run -p 9083:9083 quay.io/chattarajoy/hive-metastore hive --service metastore
+docker run -p 9083:9083 gcr.io/hybrid-qubole/hive-metastore:latest hive --service metastore
 ```
 
 Configuration parameters:
@@ -34,7 +34,7 @@ docker run \
   -e "AWS_ACCESS_KEY_ID=xxx" \
   -e "AWS_SECRET_ACCESS_KEY=yyy" \
   -p 9083:9083 \
-  quay.io/chattarajoy/hive-metastore hive --service metastore
+  gcr.io/hybrid-qubole/hive-metastore:latest hive --service metastore
 ```
 
 
@@ -55,4 +55,13 @@ Add your AWS Access Key and Secret Key in the file: `kubernetes/config-map.yaml`
 
 ```bash
 kubectl apply -f kubernetes/
+```
+
+### Docker Compose
+
+make sure docker is up and running, and fill the relevant variables in the docker compose file:
+
+```bash
+cd docker 
+docker-compose up
 ```
