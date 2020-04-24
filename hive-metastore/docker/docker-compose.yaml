@@ -1,0 +1,22 @@
+version: '2.0'
+services:
+  hms:
+    image: gcr.io/hybrid-qubole/hive-metastore:latest
+    ports:
+      - "9083:9083"
+    environment:
+      - DB_TYPE=postgres
+      - CONNECTION_URI=jdbc:postgresql://postgres:5432/metastore
+      - CONNECTION_USER=hms_user
+      - CONNECTION_PASSWORD=hms_password
+      - CONNECTION_DRIVER=org.postgresql.Driver
+      - AWS_ACCESS_KEY_ID=""
+      - AWS_SECRET_ACCESS_KEY=""
+    depends_on:
+      - postgres
+  postgres:
+    image: postgres:9.6
+    environment:
+      - POSTGRES_USER=hms_user
+      - POSTGRES_PASSWORD=hms_password
+      - POSTGRES_DB=metastore

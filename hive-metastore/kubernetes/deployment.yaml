@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: hive-metastore
-          image: quay.io/chattarajoy/hive-metastore:latest
+          image: gcr.io/hybrid-qubole/hive-metastore:latest
           imagePullPolicy: Always
           resources:
             limits:
