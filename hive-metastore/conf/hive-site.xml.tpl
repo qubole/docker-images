@@ -76,4 +76,19 @@
     <name>hive.metastore.warehouse.dir</name>
     <value>${HIVE_WAREHOUSE_DIR}</value>
   </property>
+  <property>
+    <name>fs.gs.project.id</name>
+    <value>${GOOGLE_PROJECT_ID}</value>
+    <description>
+      Required. Google Cloud Project ID with access to configured GCS buckets.
+    </description>
+  </property>
+  <property>
+    <name>google.cloud.auth.service.account.enable</name>
+    <value>true</value>
+  </property>
+  <property>
+    <name>google.cloud.auth.service.account.json.keyfile</name>
+    <value>/creds/key.json</value>
+  </property>
 </configuration>

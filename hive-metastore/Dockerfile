@@ -25,6 +25,8 @@ RUN cd /opt && \
 
 RUN wget $MYSQL_JDBC -P /opt/hive/lib/
 RUN wget $POSTGRES_JDBC -P /opt/hive/lib/
+RUN wget https://repo1.maven.org/maven2/com/google/cloud/google-cloud-nio/0.121.0/google-cloud-nio-0.121.0.jar -P /opt/hive/lib/
+RUN wget https://storage.googleapis.com/hadoop-lib/gcs/gcs-connector-hadoop2-2.0.1.jar -P /opt/hive/lib/
 
 COPY conf/mapred-site.xml /opt/hadoop/etc/hadoop/mapred-site.xml
 COPY conf/hive-site.xml.tpl /opt/hadoop/etc/hadoop/hive-site.xml.tpl
@@ -36,7 +38,7 @@ ENV HADOOP_USER_CLASSPATH_FIRST true
 ENV HADOOP_HOME /opt/hadoop
 ENV HADOOP_CLASSPATH $HADOOP_HOME/share/hadoop/tools/lib/*
 ENV HADOOP_LIBEXEC_DIR ${HADOOP_HOME}/libexec
-ENV PATH=$PATH:/opt/hadoop/bin/:/opt/hive/bin/
+ENV PATH=$PATH:/opt/hadoop/bin/:/opt/hive/bin/:/opt/hive/lib/
 
 RUN rm /opt/hadoop/share/hadoop/common/lib/slf4j-log4j12-*.jar
 
