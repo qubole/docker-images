@@ -65,3 +65,8 @@ make sure docker is up and running, and fill the relevant variables in the docke
 cd docker 
 docker-compose up
 ```
+
+#### Google Storage Authentication for Docker Compose
+
+* Get json key file for a service account from: https://console.cloud.google.com/apis/credentials
+* Place the key file under `hive-metastore/docker/creds/` with the name `key.json` then run `docker-compose up`
