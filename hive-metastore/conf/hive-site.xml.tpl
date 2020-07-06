@@ -25,6 +25,18 @@
     <value>${AWS_SECRET_ACCESS_KEY}</value>
   </property>
   <property>
+    <name>fs.s3a.endpoint</name>
+    <value>${AWS_S3_ENDPOINT}</value>
+  </property>
+  <property>
+    <name>fs.s3a.path.style.access</name>
+    <value>true</value>
+  </property>
+  <property>
+    <name>fs.s3a.committer.magic.enabled</name>
+    <value>false</value>
+  </property>
+  <property>
     <name>mapred.input.dir.recursive</name>
     <value>true</value>
   </property>
