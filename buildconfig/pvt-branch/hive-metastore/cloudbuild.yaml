@@ -1,0 +1,14 @@
+steps:
+  - name: 'gcr.io/cloud-builders/docker'
+    id: HiveMetastore
+    timeout: 600s
+    args:
+    - build
+    - -t
+    - gcr.io/hybrid-qubole/hive-metastore:$BRANCH_NAME
+    - hive-metastore/
+timeout: 1200s
+tags:
+  - $BRANCH_NAME
+images:
+  - gcr.io/hybrid-qubole/hive-metastore

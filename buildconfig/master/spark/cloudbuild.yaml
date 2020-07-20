@@ -1,0 +1,38 @@
+steps:
+  - name: 'gcr.io/cloud-builders/docker'
+    id: Spark
+    waitFor: ['-']
+    timeout: 600s
+    args:
+      - build
+      - -t
+      - gcr.io/hybrid-qubole/spark:latest
+      - spark/
+  - name: 'gcr.io/cloud-builders/docker'
+    id: SparkPush
+    timeout: 300s
+    waitFor:
+      - Spark
+    args:
+      - push
+      - gcr.io/hybrid-qubole/spark:latest
+  - name: 'gcr.io/cloud-builders/docker'
+    id: SparkPy36
+    waitFor:
+      - Spark
+      - SparkPush
+    timeout: 600s
+    args:
+      - build
+      - --build-arg
+      - BASE_CONTAINER=gcr.io/hybrid-qubole/spark:latest
+      - -t
+      - gcr.io/hybrid-qubole/spark-python:3.6-latest
+      - spark/python-3.6/
+timeout: 2400s
+tags:
+  - latest
+  - 3.6-latest
+images:
+  - gcr.io/hybrid-qubole/spark
+  - gcr.io/hybrid-qubole/spark-python
