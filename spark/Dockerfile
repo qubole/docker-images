@@ -76,8 +76,8 @@ RUN mkdir -p /tmp && \
 # spark-hive jars
 RUN cd /tmp && \
  wget https://repo1.maven.org/maven2/org/apache/spark/spark-hive_2.11/2.4.5/spark-hive_2.11-2.4.5.jar && \
- wget https://repo1.maven.org/maven2/org/spark-project/hive/hive-metastore/1.2.1.spark2/hive-metastore-1.2.1.spark2.jar && \
- wget https://repo1.maven.org/maven2/org/spark-project/hive/hive-exec/1.2.1.spark2/hive-exec-1.2.1.spark2.jar && \
+ wget https://repo1.maven.org/maven2/org/apache/hive/hive-metastore/1.2.2/hive-metastore-1.2.2.jar && \
+ wget https://repo1.maven.org/maven2/org/apache/hive/hive-exec/1.2.2/hive-exec-1.2.2.jar && \
  wget https://repo1.maven.org/maven2/org/apache/thrift/libfb303/0.9.3/libfb303-0.9.3.jar && \
  wget https://repo1.maven.org/maven2/org/apache/thrift/libthrift/0.9.3/libthrift-0.9.3.jar
 
