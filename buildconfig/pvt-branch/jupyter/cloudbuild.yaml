@@ -1,0 +1,37 @@
+steps:
+  - name: 'gcr.io/cloud-builders/docker'
+    id: JupyterPySpark
+    timeout: 1800s
+    waitFor: ['-']
+    args:
+      - build
+      - -t
+      - gcr.io/hybrid-qubole/jupyter-pyspark:$BRANCH_NAME
+      - jupyter/pyspark/
+  - name: 'gcr.io/cloud-builders/docker'
+    id: JupyterPySparkPush
+    timeout: 300s
+    waitFor:
+      - JupyterPySpark
+    args:
+      - push
+      - gcr.io/hybrid-qubole/jupyter-pyspark:$BRANCH_NAME
+  - name: 'gcr.io/cloud-builders/docker'
+    id: Jupyter
+    waitFor:
+      - JupyterPySpark
+      - JupyterPySparkPush
+    timeout: 1800s
+    args:
+      - build
+      - --build-arg
+      - BASE_CONTAINER=gcr.io/hybrid-qubole/jupyter-pyspark:$BRANCH_NAME
+      - -t
+      - gcr.io/hybrid-qubole/jupyter:$BRANCH_NAME
+      - jupyter/
+timeout: 3000s
+tags:
+  - $BRANCH_NAME
+images:
+  - gcr.io/hybrid-qubole/jupyter-pyspark
+  - gcr.io/hybrid-qubole/jupyter
